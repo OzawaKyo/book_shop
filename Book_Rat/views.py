@@ -3,8 +3,7 @@ from .models import Book
 from .forms import BookForm
 from django.http import HttpResponse
 from .serializers import BookSerializer
-from rest_framework import generics
-
+from rest_framework import generics 
 
 def addBook(request):
     form = BookForm()
@@ -26,3 +25,8 @@ def home(request):
 class BookList(generics.ListCreateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
+
+
+class BookDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer    
