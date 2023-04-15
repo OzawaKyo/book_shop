@@ -3,7 +3,12 @@ from .models import Book
 from .forms import BookForm
 from django.http import HttpResponse
 from .serializers import BookSerializer
-from rest_framework import generics 
+from rest_framework import generics , authentication , permissions
+from rest_framework.views import APIView
+from rest_framework.response import Response 
+from django.contrib.auth.models import User 
+
+
 
 def addBook(request):
     form = BookForm()
@@ -30,3 +35,10 @@ class BookList(generics.ListCreateAPIView):
 class BookDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer    
+
+class UserListView(APIView):
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+    def get(self , request , format=None):
+        usernames = [user.username for user in User.objects.all()]
+        return Response(usernames)

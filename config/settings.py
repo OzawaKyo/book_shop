@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Book_Rat',
     'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
 ]
 
@@ -129,7 +130,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_ALLOW_ALL = True  # allow requests from any origin
 # or, to allow requests only from specific origins:
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000',  # your React app's URL
-    'http://127.0.0.1:3000',
-]
+# CORS_ORIGIN_WHITELIST = [
+#     'http://localhost:3000',  # your React app's URL
+#     'http://127.0.0.1:3000',
+# ]
