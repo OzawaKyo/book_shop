@@ -10,9 +10,8 @@ class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    # description = models.CharField(max_length=800)
-    # cover = models.ImageField(upload_to='covers/')
-
+    description = models.CharField(max_length=2000)
+    cover = models.CharField(max_length=1000)
     def __str__(self):
         return self.title
 

@@ -23,8 +23,9 @@ def showBook(request):
     books = Book.objects.all()
     return render(request, './showBook.html',{'books':books})
 
+
 def home(request):
-    return render(request,'./home.html')
+    return render(request,'./home.html',{"titre":"hamid"})
 
 
 class BookList(generics.ListCreateAPIView):
