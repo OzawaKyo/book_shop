@@ -7,7 +7,10 @@ from rest_framework import generics , authentication , permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response 
 from django.contrib.auth.models import User 
-
+from .models import Cart
+from .serializers import CartSerializer
+from rest_framework import status
+from rest_framework.generics import ListAPIView
 
 
 def addBook(request):
@@ -37,9 +40,10 @@ class BookDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer    
 
-class UserListView(APIView):
-    authentication_classes = [authentication.TokenAuthentication]
-    permission_classes = [permissions.IsAuthenticated]
-    def get(self , request , format=None):
-        usernames = [user.username for user in User.objects.all()]
-        return Response(usernames)
+class CartList(generics.ListCreateAPIView):
+    queryset = Cart.objects.all()
+    serializer_class = CartSerializer
+
+class CartDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Cart.objects.all()
+    serializer_class = CartSerializer

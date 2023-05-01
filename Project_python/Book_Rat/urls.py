@@ -9,6 +9,7 @@ urlpatterns = [
     path('show',showBook, name='show'),
     path('books/', BookList.as_view()),
     path('books/<int:pk>', BookDetail.as_view(), name='book-detail'),
-    path('users/', UserListView.as_view(),name='users'),
-    path('get-token',obtain_auth_token)
+    path('cart/', CartList.as_view()),
+    path('cart/<int:pk>', CartDetail.as_view()),
+
 ]

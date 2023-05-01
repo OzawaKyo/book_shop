@@ -20,3 +20,8 @@ class Book(models.Model):
 def create_auth_token(sender,instance=None,created=False,**kwargs):
     if created:
         Token.objects.create(user=instance)
+
+class Cart(models.Model):
+    user = models.CharField(max_length=200)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
